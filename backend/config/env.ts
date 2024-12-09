@@ -6,14 +6,11 @@ config();
 
 export default function env() {
     return createEnv({
-        server: {
-            DATABASE_URL: z.string().url(),
-            OPEN_AI_API_KEY: z.string().min(1),
-        },
         clientPrefix: "PUBLIC_",
-        client: {
-            PUBLIC_URL_BASE: z.string()
+        server: {
+            IS_PRODUCTION: z.boolean()
         },
+        client: {},
         runtimeEnv: process.env,
     });
 }
