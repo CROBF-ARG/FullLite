@@ -4,7 +4,8 @@ import { z } from "zod";
 config();
 
 const environment = z.object({
-    PORT: z.string()
+    PORT: z.string(),
+    IS_DEVELOPMENT: z.string()
 });
 
 export default function env() {
