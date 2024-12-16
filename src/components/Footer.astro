@@ -1,0 +1,28 @@
+<footer>
+    &copy; <span class="date"></span>
+    <a href="https://crobf.vercel.app">CROBF</a>. All rights reserved.
+</footer>
+
+<script is:inline>
+    const date = document.querySelector("footer .date");
+    const is_create_year = new Date().getFullYear() === 2024;
+    date.innerHTML = `${is_create_year ? "" : "2024 - "}${new Date().getFullYear()}`;
+</script>
+
+<style lang="scss">
+    footer {
+        text-align: center;
+        padding: 10vh 0 5vh 0;
+        font-size: 1.5rem;
+
+        @media screen and (width < 800px) {
+            font-size: 2rem;
+        }
+
+        span,
+        a {
+            color: aliceblue;
+            text-decoration: none;
+        }
+    }
+</style>
