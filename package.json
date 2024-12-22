@@ -2,11 +2,15 @@
   "name": "fulllite",
   "version": "1.0.0",
   "description": "**FullLite** es un template ligero para crear aplicaciones web sencillas con una arquitectura full stack. Combina un backend en **Express.js**, un frontend basado en **React**, y soporte para **conexión a bases de datos**, permitiendo un desarrollo rápido y estructurado.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "npx tsc && node ./dist/server.js",
-    "build": "npx tsc",
-    "dev": "nodemon ./server.ts"
+    "build:server": "npx tsc",
+    "dev:server": "nodemon ./server.ts",
+    "build:front": "npx vite build ./frontend --outDir ../dist/frontend --emptyOutDir",
+    "dev:front": "npx vite ./frontend",
+    "build": "npm run build:server && npm run build:front",
+    "start": "node dist/server.js",
+    "dev": "concurrently --kill-others \"npm run dev:server\" \"npm run dev:front\""
   },
   "keywords": [],
   "author": "",
@@ -21,8 +25,10 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.1",
+    "concurrently": "^9.1.0",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
   }
 }

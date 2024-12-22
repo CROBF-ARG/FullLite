@@ -3,7 +3,7 @@ import type { CorsOptions } from "cors";
 
 const options: CorsOptions = {
     origin: process.env.CORS_ORIGIN || "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
     preflightContinue: false,

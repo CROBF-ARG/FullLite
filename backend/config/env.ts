@@ -3,18 +3,18 @@ import { z } from "zod";
 
 config();
 
-const environment = z.object({
+const environmentSchema = z.object({
     PORT: z.string().transform(Number),
     IS_DEVELOPMENT: z.string().transform((val) => val === "true" || val === "1")
 });
 
-const safe_env = environment.safeParse(process.env);
+const safeEnv = environmentSchema.safeParse(process.env);
 
-if (!safe_env.success) {
-    console.error("Error en tus variables de entorno:", safe_env.error.format());
-    throw new Error("Error al validar las variables de entorno.");
+if (!safeEnv.success) {
+    console.error("Error in your environment variables:", safeEnv.error.format());
+    throw new Error("Environment variable validation failed.");
 }
 
-const env = (): z.infer<typeof environment> => safe_env.data;
+const { data: env } = safeEnv;
 
-export default env;
+export default env as z.infer<typeof environmentSchema>;

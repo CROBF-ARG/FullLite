@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 
 function logger(req: Request, res: Response, next: NextFunction) {
     const { method, url } = req;
