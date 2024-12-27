@@ -1,4 +1,4 @@
-import cors from "cors";
+import _cors from "cors";
 import type { CorsOptions } from "cors";
 
 const options: CorsOptions = {
@@ -10,4 +10,6 @@ const options: CorsOptions = {
     optionsSuccessStatus: 204,
 };
 
-export default () => cors(options);
+const cors = _cors(options);
+
+export default cors;
