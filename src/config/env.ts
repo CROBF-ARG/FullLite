@@ -3,18 +3,23 @@ import { z } from "zod";
 
 config();
 
-const environmentSchema = z.object({
-    PORT: z.string().transform(Number),
-    IS_DEVELOPMENT: z.string().transform((val) => val === "true" || val === "1")
+export const schema = z.object({
+    PORT: z.coerce.number().min(1000).default(3000),
+    MODE: z.union([
+        z.literal("development"),
+        z.literal("production"),
+        z.literal("testing")
+    ]).default("development")
 });
 
-const safeEnv = environmentSchema.safeParse(process.env);
 
-if (!safeEnv.success) {
-    console.error("Error in your environment variables:", safeEnv.error.format());
+export type Environment = z.infer<typeof schema>;
+
+const { data: env, success, error } = schema.safeParse(process.env);
+
+if (!success) {
+    console.error("Error in your environment variables:", error.format());
     throw new Error("Environment variable validation failed.");
 }
 
-const { data: env } = safeEnv;
-
-export default env as z.infer<typeof environmentSchema>;
+export default env as Environment;

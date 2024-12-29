@@ -7,7 +7,7 @@ const app = express();
 app.use(cors);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("../public"));
+app.use(express.static(__dirname + "/public"));
 
 app.listen(env.PORT, () => {
     console.log(`Your project is running in http://localhost:${env.PORT}`);
