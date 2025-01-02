@@ -9,7 +9,7 @@ export const schema = z.object({
         z.literal("development"),
         z.literal("production"),
         z.literal("testing")
-    ]).default("development")
+    ]).default("production")
 });
 
 
