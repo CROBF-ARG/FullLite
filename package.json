@@ -6,7 +6,9 @@
   "type": "commonjs",
   "scripts": {
     "build": "npm --prefix src run build && npm --prefix client run build",
-    "dev": "concurrently --kill-others 'npm --prefix src run dev' 'npm --prefix client run dev'",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "concurrently --kill-others 'npm --prefix src run build:watch' 'node dist/index.js'",
+    "dev": "concurrently --kill-others 'npm run dev:server' 'npm run dev:client'",
     "start": "node ./dist/index.js"
   },
   "keywords": [],

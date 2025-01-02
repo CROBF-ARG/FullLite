@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "build": "npx swc . -d ./../dist --config-file .swcrc",
-        "dev": "nodemon ./index.ts"
+        "build:watch": "nodemon --watch . --ext ts,tsx --exec 'npx swc . -d ./../dist --config-file .swcrc'"
     },
     "dependencies": {
         "cors": "^2.8.5",

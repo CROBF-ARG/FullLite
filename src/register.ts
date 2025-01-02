@@ -13,7 +13,7 @@ const COMMON_ROUTE_PATH = ["routes", "index"];
  */
 function getMainRouteFile(module_name: string): string {
     const path = join(MODULES_PATH, module_name, ...COMMON_ROUTE_PATH);
-    const extension = env.MODE === "development" ? ".ts" : ".js";
+    const extension = env.MODE === "development" ? ".js" : ".js";
     return `${path}${extension}`;
 }
 

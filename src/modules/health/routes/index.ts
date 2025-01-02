@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import ApiRouter from "../../../shared/services/ApiRouter";
 
-ApiRouter.get("/health", (_: Request, res: Response) => {
+ApiRouter.get("health", (_: Request, res: Response) => {
     const healthStatus = {
         status: "success",
         message: "Server is healthy",

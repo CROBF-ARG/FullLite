@@ -1,15 +1,18 @@
 import { config } from "dotenv";
 import { z } from "zod";
+import { join } from "path";
 
-config();
+config({
+    path: join(__dirname, '../../.env')
+});
 
 export const schema = z.object({
-    PORT: z.coerce.number().min(1000).default(3000),
+    PORT: z.coerce.number().min(1000),
     MODE: z.union([
         z.literal("development"),
         z.literal("production"),
         z.literal("testing")
-    ]).default("production")
+    ])
 });
 
 
