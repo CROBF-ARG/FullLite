@@ -25,4 +25,4 @@ register().finally(() => {
             console.log(`Your project is running at http://localhost:${env.PORT}`);
         }
     });
-})
+});
