@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import ApiRouter from "../../../shared/services/ApiRouter";
+import ApiRouter from "../../../shared/utils/ApiRouter";
 
 ApiRouter.get("health", (_: Request, res: Response) => {
     const healthStatus = {
