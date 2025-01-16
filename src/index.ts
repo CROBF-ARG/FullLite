@@ -3,6 +3,7 @@ import cors from "./config/cors";
 import env from "./config/env";
 import register from "./register";
 import ApiRouter from "./shared/utils/ApiRouter";
+import WebRouter from "./shared/utils/WebRouter";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.static(__dirname + "/public")); // Serve static files from the "
 register().then(() => {
     // Add all registered routes to the Express app
     app.use(ApiRouter.getRouter());
+    app.use(WebRouter.getRouter());
 
     // Start the server and listen on the configured port
     app.listen(env.PORT, () => {
